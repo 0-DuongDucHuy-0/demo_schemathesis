@@ -1,13 +1,13 @@
 Làm api nào thì ghi link api ở đây nhá
 
 Đăng nhập
-GET http://localhost:8080/users/login/:username/:password 
+POST http://localhost:8080/users/login
 
 Tạo acc
-GET http://localhost:8080/users/signup/:username/:password
+POST http://localhost:8080/users/signup
 
 Cập nhật thông tin cá nhân
-GET http://localhost:8080/users/updateUserInfo/:fullname/:address/:email/:phoneNumber/:username
+PUT http://localhost:8080/users/updateUserInfo/:id
 
 Lấy hết thông tin của user (trừ tk mk)
 GET http://localhost:8080/users/getAllUsers
@@ -16,7 +16,7 @@ Lấy thông tin user theo id
 GET http://localhost:8080/users/getUserById/:id
 
 Xóa user
-GET http://localhost:8080/users/deleteUserById/:id
+DELETE http://localhost:8080/users/deleteUserById/:id
 
 Lấy hết đấu giá
 GET http://localhost:8080/auctions
@@ -26,3 +26,9 @@ GET http://localhost:8080/auctions/:id
 
 Tạo đấu giá
 POST http://localhost:8080/auctions
+
+Cập nhật đấu giá theo id
+PUT http://localhost:8080/auctions/:id
+
+Xóa Đấu giá
+DELETE http://localhost:8080/auctions/:id

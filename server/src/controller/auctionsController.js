@@ -61,6 +61,46 @@ class auctionsController {
         }
     }
 
+    updateAuction = async (req, res) => {
+        try {
+            const auction_id = req.params.id;
+            const { book_id, start_time, end_time, status, start_price, step } = req.body;
+
+            const result = await pool.execute('UPDATE `auctions` SET `book_id` = ?, `start_time` = ?, `end_time` = ?, `status` = ?, `start_price` = ?, `step` = ? WHERE auction_id = ?', [book_id, start_time, end_time, status, start_price, step, auction_id])
+
+            res.status(200).json({
+                status: "success",
+                message: "Auction updated successfully",
+                data: result,
+            });
+        } catch (error) {
+            console.error(error);
+            res.status(503).json({
+                status: "error",
+                message: "Service error. Please try again later",
+            });
+        }
+    }
+
+    deleteAuction = async (req, res) => {
+        try {
+            const auction_id = req.params.id;
+
+            const result = await pool.execute('DELETE FROM `auctions` WHERE auction_id = ?', [auction_id])
+
+            res.status(200).json({
+                status: "success",
+                message: "Auction deleted successfully",
+                data: result,
+            });
+        } catch (error) {
+            console.error(error);
+            res.status(503).json({
+                status: "error",
+                message: "Service error. Please try again later",
+            });
+        }
+    }
 }
 
 module.exports = new auctionsController();
