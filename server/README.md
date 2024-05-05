@@ -19,10 +19,10 @@ Xóa user
 GET http://localhost:8080/users/deleteUserById/:id
 
 Lấy hết đấu giá
-GET http://localhost:8080/auctions/
+GET http://localhost:8080/auctions
 
 Lấy theo id
 GET http://localhost:8080/auctions/:id
 
 Tạo đấu giá
-POST http://localhost:8080/auctions/
+POST http://localhost:8080/auctions

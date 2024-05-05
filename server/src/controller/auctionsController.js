@@ -41,15 +41,15 @@ class auctionsController {
         )
     }
 
-    createAuction = (req, res) => {
+    createAuction = async (req, res) => {
         try {
             const { book_id, start_time, end_time, status, start_price, step } = req.body;
 
-            const result = pool.execute('INSERT INTO `auctions`(`book_id`, `start_time`, `end_time`, `status`, `start_price`, `step`) VALUES (?, ?, ?, ?, ?)', [book_id, start_time, end_time, status, start_price, step])
+            const result = await pool.execute('INSERT INTO `auctions`(`book_id`, `start_time`, `end_time`, `status`, `start_price`, `step`) VALUES (?, ?, ?, ?, ?, ?)', [book_id, start_time, end_time, status, start_price, step])
 
             res.status(200).json({
                 status: "success",
-                message: "Auction inserted successfully",
+                message: "Auction created successfully",
                 data: result,
             });
         } catch (error) {
