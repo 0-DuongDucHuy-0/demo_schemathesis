@@ -3,10 +3,15 @@ const router = express.Router();
 const usersController = require("../controller/usersController");
 
 //"http://localhost:8080/users/..."
-//login
-// router.get("/insertUserInfo/:fullname/:sex/:email/:phoneNumber/:dob", usersController.insertUserInfo);
-// router.get("/checkUserAccount/:username/:password/", usersController.checkUserAccount);
-// router.get("/insertUserAccount/:userId/:username/:password/:roleId", usersController.insertUserAccount);
+//log in, sign up
+router.get("/login/:username/:password/", usersController.handleLogin);
+router.get("/signup/:username/:password/", usersController.createUserAccount);
+
+router.get("/updateUserInfo/:fullname/:address/:email/:phoneNumber/:username", usersController.updateUserInfo);
+
+//admin routes
 router.get("/getAllUsers", usersController.getAllUsers);
+router.get("/getUserById/:id", usersController.getUserById);
+router.get("/deleteUserById/:id", usersController.deleteUserById);
 
 module.exports = router; 
