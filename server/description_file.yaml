@@ -30,3 +30,12 @@ paths:
       responses:
         '204':
           description: User deleted successfully
+
+    # ... Omitted for brevity
+
+    - uses: schemathesis/action@v1
+      with:
+        schema: 'https://example.schemathesis.io/openapi.json'
+        token: ${{ secrets.SCHEMATHESIS_TOKEN }}
+
+    # ... Omitted for brevity
